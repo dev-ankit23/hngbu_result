@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import type { GradeCard } from "@/lib/students"
+import type { GradeCard } from "@/lib/students";
 
 export default function GradeCardView({
   student,
   onLogout,
 }: {
-  student: GradeCard
-  onLogout: () => void
+  student: GradeCard;
+  onLogout: () => void;
 }) {
   return (
     <div className="min-h-screen bg-[#ececec]">
@@ -138,7 +138,7 @@ export default function GradeCardView({
               <div>RESULT: {student.result}</div>
               <div className="font-normal">{student.marksInWords}</div>
             </div>
-            <QrPlaceholder />
+            {/* <QrPlaceholder /> */}
           </div>
 
           <div className="mt-6 text-[15px] font-bold">
@@ -147,33 +147,33 @@ export default function GradeCardView({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-function QrPlaceholder() {
-  // Simple decorative QR-like block
-  const cells = 11
-  const pattern: boolean[][] = Array.from({ length: cells }, (_, r) =>
-    Array.from({ length: cells }, (_, c) => {
-      // finder patterns at corners
-      const inFinder = (rr: number, cc: number) =>
-        (rr < 3 && cc < 3) || (rr < 3 && cc > cells - 4) || (rr > cells - 4 && cc < 3)
-      if (inFinder(r, c)) return (r + c) % 2 === 0 || r === 0 || c === 0
-      return (r * 7 + c * 3) % 3 === 0
-    }),
-  )
-  return (
-    <div
-      className="grid border border-black"
-      style={{
-        gridTemplateColumns: `repeat(${cells}, 6px)`,
-        gridTemplateRows: `repeat(${cells}, 6px)`,
-      }}
-      aria-label="QR code"
-    >
-      {pattern.flat().map((on, i) => (
-        <div key={i} className={on ? "bg-black" : "bg-white"} />
-      ))}
-    </div>
-  )
-}
+// function QrPlaceholder() {
+//   // Simple decorative QR-like block
+//   const cells = 11
+//   const pattern: boolean[][] = Array.from({ length: cells }, (_, r) =>
+//     Array.from({ length: cells }, (_, c) => {
+//       // finder patterns at corners
+//       const inFinder = (rr: number, cc: number) =>
+//         (rr < 3 && cc < 3) || (rr < 3 && cc > cells - 4) || (rr > cells - 4 && cc < 3)
+//       if (inFinder(r, c)) return (r + c) % 2 === 0 || r === 0 || c === 0
+//       return (r * 7 + c * 3) % 3 === 0
+//     }),
+//   )
+//   return (
+//     <div
+//       className="grid border border-black"
+//       style={{
+//         gridTemplateColumns: `repeat(${cells}, 6px)`,
+//         gridTemplateRows: `repeat(${cells}, 6px)`,
+//       }}
+//       aria-label="QR code"
+//     >
+//       {pattern.flat().map((on, i) => (
+//         <div key={i} className={on ? "bg-black" : "bg-white"} />
+//       ))}
+//     </div>
+//   )
+// }
